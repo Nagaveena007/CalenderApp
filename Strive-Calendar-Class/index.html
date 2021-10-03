@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strive Calendar</title>
+
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    
+    <!--
+
+        --------------- CALENDAR'S FUNCTIONAL REQUIREMENTS ---------------  -> ANALYSIS
+        - show the days of the month
+        - user can click on a date to select it
+        - user should be able to provide some information about a meeting, and create that new meeting accordingly
+        - we should display all the saved meetings for the selected day
+        - meeting details cover time and description
+        - the selected day should be highlighted somehow
+        - keep track of the saved meetings when we select other days
+
+        -- NICE TO HAVE
+        - show a visual hint on days that have assigned meetings
+        - persist meeting data, so we won't lose that when refreshing the page
+        - delete a saved meeting
+        - edit a saved meeting
+        - displaying the current month (with the appropriate number of days and the name of the month in the header)
+        - being able to switch among several months/years
+        - why the heck are we expected to display 5 days per row?
+        - should we display weekdays Sun to Sat or Mon to Sun?
+        - show public holidays
+
+
+        --------------- THINGS THAT WE HAVE TO IMPLEMENT ---------------  -> DESIGN
+
+        -- HTML ELEMENTS
+        - a container for the entire month
+        -- the days of the month
+        - page title
+        - a container for the meeting creation controls
+        -- meeting creation button
+        -- controls for collecting meeting time and description
+        -- a title for the section itself
+        - a container to display the meetings currently assigned to the selected day
+
+        -- CSS STYLES
+        - generic day
+        - selected day
+        - inputs
+        - general font face and color
+        - meetings
+        -- NICE TO HAVE
+        - day hover
+        - public holidays
+        - day with assigned meetings
+
+        -- FUNCTIONS
+        - select a day (when the user clicks on that)
+        - create a meeting based on user provided information
+        - display assigned meetings for the selected day
+        - keep track of saved meetings
+        - create days dynamically
+        -- NICE TO HAVE
+        - persist saved meetings to the disk, and load them as soon as we load the page
+        - change visual appearance of days that have assigned meetings
+        - delete a meeting
+        - edit a meeting
+        - switch to a different month
+        - show weekdays
+        - show public holidays
+    -->
+
+    <script src="index.js"></script>
+
+    <h1>Strive Calendar</h1>
+    <!-- MONTH -->
+    <div id="month-container">
+    </div>
+
+    
+    <!-- MEETING CREATION -->
+    <div id="meetings-container">
+
+        <h2>Meetings for the day</h2>
+
+        <div id="meeting-creation">
+            <input type="time" id="meeting-time" value="09:00" />
+            <input type="text" id="meeting-description" placeholder="insert description here" />
+            <input type="button" value="Create" onclick="createNewMeeting()" />
+        </div>
+
+        <ul id="meetings-for-the-day">
+            <!-- Dynamically generating them -->
+        </ul>
+    </div>
+
+</body>
+</html>
